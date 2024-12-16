@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru-RU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="robots" content="noindex">
+
+  <link href="/main.css" rel="stylesheet">
+  <title>{{ name }}</title>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="card">
+    <h1>{{ name }}</h1>
+
+    <div class="employee">
+      <div class="employee__photo">
+        <img src="https://bot.m73.ru/photos/{{ photo }}" alt="{{name}}"/>
+      </div>
+
+      <div class="employee__descr">
+        {% if department %}<p>{{ department }}</p>{% endif %}
+        {% if room %}<p>Кабинет: {{ room }}</p>{% endif %}
+        <p>{{ position }}</p>
+        {% if localphone %}<p>Вн. телефон: {{ localphone }}</p>{% endif %}
+        <p><a href="tel: {{ phone }} ">{{ phone }}</a></p>
+        <p><a href="mailto:{{ email }}">{{ email }}</a></p>
+      </div>
+
+    </div>
+</div>
+
+
+</div>
+<!--<script src="main.js" ></script>-->
+</body>
+</html>
+
+

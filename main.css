@@ -1,0 +1,273 @@
+@charset "utf-8";
+
+/* CSS RESET */
+/* Preferred box-sizing value */
+*, *::before, *::after{box-sizing:border-box; margin:0;}
+
+a { text-decoration:none; color:inherit; cursor:pointer; }
+button {background-color:transparent; color:inherit; border-width:0; padding:0; cursor:pointer;}
+figure {margin:0;}
+input::-moz-focus-inner {border:0; padding:0; margin:0;}
+ul, ol, dd {margin:0; padding:0; list-style:none;}
+h1, h2, h3, h4, h5, h6 {margin:0; font-size:inherit; font-weight:inherit;}
+p {margin:0; }
+cite {font-style: normal;}
+fieldset {border-width:0; padding:0; margin:0;}
+
+input, textarea {
+    outline:none;
+}
+
+
+
+/* Reapply the pointer cursor for anchor tags */
+a, button {
+    cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+    list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+    max-inline-size: 100%;
+    max-block-size: 100%;
+    display: block;
+}
+
+/* removes spacing between cells in tables */
+table {
+    border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input, textarea {
+    -webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+    white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+    -webkit-appearance: revert;
+    appearance: revert;
+}
+
+/* preformatted text - use only for this feature */
+:where(pre) {
+    all: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::placeholder {
+    color: unset;
+}
+
+/* remove default dot (•) sign */
+::marker {
+    content: initial;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+    display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element */
+:where([contenteditable]:not([contenteditable="false"])) {
+    -moz-user-modify: read-write;
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    -webkit-line-break: after-white-space;
+    -webkit-user-select: auto;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable="true"]) {
+    -webkit-user-drag: element;
+}
+
+
+html{
+    font-size: 1px; /*for using REM units*/
+}
+
+/* MAIN STYLES */
+
+:root {
+    --main-radius: 15rem;
+    --page-padding: 15rem;
+    --font-size: 22rem;
+    --font-family: system-ui, sans-serif, Verdana;
+    --line-height: 1.55;
+    --letter-spacing: 0.2rem;
+    --gray-color: #555;
+    --font-color: #333333;
+    --font-color-inverted:#ffffff;
+    --title-color: #362456;
+    --prime-color: #1e24ef;
+    --secondary-color: #6F00AF;
+    --tertiary-color: #f8f8f8;
+    --meta-color: #122090;
+    --site-bg-color: #bbbbbb;
+    --site-bg-gradient: linear-gradient(135deg, rgba(179, 212, 255, 0.31) 0%, rgb(249, 251, 255) 100%);
+    --title-branding-gradient: -webkit-linear-gradient(0deg, var(--prime-color) 30%, var(--secondary-color) 90%);
+    --page-bg-color: #ffffff;
+    --link-color: #004593;
+    --link-decoration: inherit;
+    --link-color-hover:#004593;
+    --blur-color: rgba(255, 255, 255, 0.25);
+    --img-filter: grayscale(0);
+    --footer-bg: #eff5f9;
+    --footer-text-color: #5d5d5d;
+    --font-weight: 300;
+    --button-border-color: transparent;
+    --button-font-color: var(--font-color-inverted);
+
+
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+    font-weight: var(--font-weight);
+    min-height: 100vh;
+    background: linear-gradient(135deg, #8363a1 0%, #74a8c3 100%);
+    line-height: var(--line-height);
+    min-width: 240px;
+
+}
+
+body a {
+    text-decoration: underline;
+}
+
+.wrapper{
+    margin: 0 auto;
+    max-width: 1000px;
+    width: 100%;
+    padding: 20rem;
+}
+
+
+
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: var(--font-family);
+    font-weight: calc(var(--font-weight) + 300);
+    color: var(--title-color);
+    word-break: break-word;
+}
+
+h1 {
+    font-size: calc(var(--font-size) * 1.7);
+    line-height: 1.2;
+    margin-bottom: 20rem;
+    text-align: center;
+}
+
+
+.button {
+    font-weight: var(--font-weight);
+    padding: 4rem 8rem;
+    display: inline-block;
+    font-size: var(--font-size);
+    color: var(--meta-color);
+    background-color: var(--page-bg-color);
+    border-radius: var(--main-radius);
+    border: 2px solid var(--meta-color);
+    cursor: pointer;
+    transition: all .3s ease;
+    text-decoration: var(--link-decoration);
+}
+
+.button:hover{
+    color: var(--page-bg-color);
+    background-color: var(--meta-color);
+    border-radius: var(--main-radius);
+}
+
+.button:disabled{
+    cursor: default;
+    opacity: 0.25;
+    color: var(--page-bg-color);
+    background-color: var(--meta-color);
+    border-radius: var(--main-radius);
+}
+
+
+.card{
+    padding: 20rem;
+    border-radius: var(--main-radius);
+    background: rgba(255, 255, 255, 0.41);
+}
+
+
+.employee {
+    font-size: calc(var(--font-size)*1.3);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.employee__photo{
+    flex: 0 1 30%;
+}
+
+
+.employee__photo img{
+    border: 1px solid rgba(128, 128, 128, 0.25);
+    border-radius: 4px;
+}
+
+
+.employee__descr{
+    flex: 0 1 69%;
+    padding-left: 10rem;
+}
+
+
+
+@media (max-width: 700px) {
+
+    .card{min-height:100vh}
+    .wrapper{
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .employee__photo{
+    border: unset;
+    padding: 0 45rem;
+    flex: 0 1 100%;
+        margin-bottom: 20rem;
+}
+
+.employee__descr{
+    flex: 0 1 100%;
+    padding-left: 0;
+    text-align: center;
+}
+
+
+    :root {
+        --main-radius: 0;
+        --font-size: 15rem;
+    }
+
+
+}
